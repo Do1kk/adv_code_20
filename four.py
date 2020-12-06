@@ -1,5 +1,8 @@
 import re
 
+FIELDS = set(["ecl:", "pid:", "eyr:", "hcl:", "byr:", "iyr:", "hgt:"])
+FILE_DIR = "four_data.txt"
+
 
 def load_data(file_name):  # "four_data.txt"
     data = []
@@ -30,14 +33,11 @@ def correct_passports(passports):
 
 
 def main():
-    data = load_data(file_dir)
+    data = load_data(FILE_DIR)
     passports = passports_separation(data)
     valid_num = correct_passports(passports)
     print(valid_num)
 
-
-FIELDS = set(["ecl:", "pid:", "eyr:", "hcl:", "byr:", "iyr:", "hgt:"])
-file_dir = "four_data.txt"
 
 if __name__ == "__main__":
     main()
