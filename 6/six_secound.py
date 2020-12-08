@@ -6,18 +6,18 @@ from six import load_data
 def count_yes(data):
     counter = 0
     answers = []
-    for line in range(len(data)):
-        # When is one line.
-        if answers == [] and data[line + 1] == "":
-            counter += len(data[line])
-        # Two and more lines.
+    line_counter = 0
+    # Last line. "strip()" in load_data erase last line.
+    data.append("\n")
+    for line in range(len(data[:])):
+        line_counter += 1
         for ch in data[line]:
             answers.append(ch)
         if data[line] == "" or data[line] == data[-1]:
             counter_k_v = Counter(answers)
-            print(counter_k_v)
-            counter += sum(1 for i in counter_k_v.values() if i > 1)
+            counter += sum(1 for i in counter_k_v.values() if i == line_counter - 1)
             answers = []
+            line_counter = 0
     print(counter)
 
 
